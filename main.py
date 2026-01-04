@@ -11,9 +11,17 @@ def main():
             day_num,
             DATE '2026-01-01' + day_num::INTEGER - 1 AS date,
             raw_count,
+            FLOOR(
+                AVG(raw_count) OVER (
+                    ORDER BY day_num
+                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                )
+            )::INTEGER AS avg_to_date,
             notes,
         FROM
             raw
+        ORDER BY
+            day_num
         """
     )
     con.table("enhanced").to_csv("data/processed/enhanced.csv")
