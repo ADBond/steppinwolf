@@ -1,4 +1,4 @@
-day_num,date,day_of_week,raw_count,avg_to_date,weekly_rolling_avg,notes
-1,2026-01-01,Thursday,5754,5754,5754,
-2,2026-01-02,Friday,9358,7556,7556,
-3,2026-01-03,Saturday,13083,9398,9398,
+day_num,date,day_of_week,raw_count,eod_balance,avg_to_date,weekly_rolling_avg,notes
+1,2026-01-01,Thursday,5754,-4246,5754,5754,
+2,2026-01-02,Friday,9358,-4888,7556,7556,
+3,2026-01-03,Saturday,13083,-1805,9398,9398,

@@ -12,6 +12,10 @@ def main():
             DATE '2026-01-01' + day_num::INTEGER - 1 AS date,
             dayname(date) AS day_of_week,
             raw_count,
+            SUM(raw_count) OVER (
+                ORDER BY day_num
+                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+            ) - 10000*day_num AS eod_balance,
             FLOOR(
                 AVG(raw_count) OVER (
                     ORDER BY day_num
