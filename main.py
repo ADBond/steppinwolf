@@ -10,6 +10,7 @@ def main():
         SELECT
             day_num,
             DATE '2026-01-01' + day_num::INTEGER - 1 AS date,
+            dayname(date) AS day_of_week,
             raw_count,
             FLOOR(
                 AVG(raw_count) OVER (
@@ -17,6 +18,12 @@ def main():
                     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS avg_to_date,
+            FLOOR(
+                AVG(raw_count) OVER (
+                    ORDER BY day_num
+                    ROWS BETWEEN 7 PRECEDING AND CURRENT ROW
+                )
+            )::INTEGER AS weekly_rolling_avg,
             notes,
         FROM
             raw
