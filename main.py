@@ -28,6 +28,10 @@ def main():
                     ROWS BETWEEN 7 PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS weekly_rolling_avg,
+            SUM(raw_count) OVER (
+                ORDER BY day_num
+                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+            ) - 12500*day_num AS ambitious_balance,
             notes,
         FROM
             raw
