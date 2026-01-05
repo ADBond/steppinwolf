@@ -2,7 +2,25 @@ import duckdb
 
 def main():
     con = duckdb.connect()
-    con.execute("CREATE TABLE raw AS SELECT * FROM read_csv_auto('data/raw/count.csv')")
+    con.execute(
+        """
+        CREATE TABLE raw AS
+        SELECT
+            day_num,
+            raw_count,
+            notes,
+        FROM read_csv(
+            'data/raw/count.csv',
+            delim = ',',
+            header = true,
+            columns = {
+                'day_num': 'INT8',
+                'raw_count': 'INT16',
+                'notes': 'VARCHAR',
+            }
+        )
+        """
+    )
 
     con.execute(
         """
