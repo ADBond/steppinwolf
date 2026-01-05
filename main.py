@@ -59,6 +59,34 @@ def main():
     )
     con.table("enhanced").to_csv("data/processed/enhanced.csv")
 
+    con.execute(
+        """
+        CREATE TABLE summary_dow AS
+        SELECT
+            -- is there something in-built for this?
+            CASE
+                WHEN day_of_week = 'Monday' THEN 1
+                WHEN day_of_week = 'Tuesday' THEN 2
+                WHEN day_of_week = 'Wednesday' THEN 3
+                WHEN day_of_week = 'Thursday' THEN 4
+                WHEN day_of_week = 'Friday' THEN 5
+                WHEN day_of_week = 'Saturday' THEN 6
+                WHEN day_of_week = 'Sunday' THEN 7
+                ELSE -1
+            END AS day_index,
+            day_of_week,
+            AVG(raw_count) AS avg_count,
+            STDDEV_SAMP(raw_count) AS std_count,
+        FROM
+            enhanced
+        GROUP BY
+            day_of_week
+        ORDER BY
+            day_index
+        """
+    )
+    con.table("summary_dow").to_csv("data/processed/summary_dow.csv")
+
 
 if __name__ == "__main__":
     main()
