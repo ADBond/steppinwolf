@@ -46,6 +46,12 @@ def main():
                     ROWS BETWEEN 7 PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS weekly_rolling_avg,
+            FLOOR(
+                AVG(raw_count) OVER (
+                    ORDER BY day_num
+                    ROWS BETWEEN 28 PRECEDING AND CURRENT ROW
+                )
+            )::INTEGER AS monthly_rolling_avg,
             SUM(raw_count) OVER (
                 ORDER BY day_num
                 ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
