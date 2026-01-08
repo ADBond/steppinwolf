@@ -1,4 +1,7 @@
 day_index,day_of_week,avg_count,std_count
+1,Monday,10443.0,
+2,Tuesday,6059.0,
+3,Wednesday,14586.0,
 4,Thursday,5754.0,
 5,Friday,9358.0,
 6,Saturday,13083.0,

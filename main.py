@@ -87,6 +87,8 @@ def main():
     )
     con.table("summary_dow").to_csv("data/processed/summary_dow.csv")
 
+    con.sql("SELECT sum(raw_count) AS total FROM raw").show()
+
 
 if __name__ == "__main__":
     main()
