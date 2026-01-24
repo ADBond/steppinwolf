@@ -52,10 +52,12 @@ def main():
                     ROWS BETWEEN 28 PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS monthly_rolling_avg,
-            SUM(raw_count) OVER (
-                ORDER BY day_num
-                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-            ) - 12500*day_num AS ambitious_balance,
+            FLOOR(
+                AVG(raw_count) OVER (
+                    ORDER BY day_num
+                    ROWS BETWEEN 84 PRECEDING AND CURRENT ROW
+                )
+            )::INTEGER AS quarterly_rolling_avg,
             notes,
         FROM
             raw
