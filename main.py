@@ -41,6 +41,17 @@ def main():
                 )
             )::INTEGER AS avg_to_date,
             FLOOR(
+                MEDIAN(raw_count) OVER (
+                    ORDER BY day_num
+                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                )
+            )::INTEGER AS median_to_date,
+            -- equivalent to days over or at 10000 - days under
+            2 * COUNTIF(raw_count >= 10000) OVER (
+                ORDER BY day_num
+                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+            ) - day_num AS net_days_over_ten,
+            FLOOR(
                 AVG(raw_count) OVER (
                     ORDER BY day_num
                     ROWS BETWEEN 7 PRECEDING AND CURRENT ROW
