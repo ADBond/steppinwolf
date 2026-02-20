@@ -124,7 +124,17 @@ def main():
             enhanced
         """
     )
-    con.table("goal_prog").to_csv("data/processed/goal_progress.csv")
+    con.execute(
+        """
+        CREATE TABLE goal_prog_long AS
+        UNPIVOT goal_prog
+        ON *
+        INTO
+            NAME stat
+            VALUE value;
+        """
+    )
+    con.table("goal_prog_long").to_csv("data/processed/goal_progress.csv")
 
     con.sql("SELECT sum(raw_count) AS total FROM raw").show()
 
