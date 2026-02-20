@@ -11,3 +11,5 @@ In approximate priority order.
     * weekly, stretch = monthly
 * Lower quartile >= 5000
 * Upper quartile >= 12500
+* Mean >= 10000 for 4/7 days of week
+* Mean >= 10000 for _every_ DoW

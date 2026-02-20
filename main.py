@@ -82,6 +82,7 @@ def main():
         """
         CREATE TABLE summary_dow AS
         SELECT
+            COUNT(*) AS occurences,
             -- is there something in-built for this?
             CASE
                 WHEN day_of_week = 'Monday' THEN 1
@@ -94,8 +95,8 @@ def main():
                 ELSE -1
             END AS day_index,
             day_of_week,
-            AVG(raw_count) AS avg_count,
-            STDDEV_SAMP(raw_count) AS std_count,
+            round(AVG(raw_count), 2) AS avg_count,
+            round(STDDEV_SAMP(raw_count), 2) AS std_count,
         FROM
             enhanced
         GROUP BY
