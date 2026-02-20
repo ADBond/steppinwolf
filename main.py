@@ -106,6 +106,25 @@ def main():
     )
     con.table("summary_dow").to_csv("data/processed/summary_dow.csv")
 
+    con.execute(
+        """
+        CREATE TABLE goal_prog AS
+        SELECT
+            count(*) AS days_completed,
+            365 - days_completed AS days_remaining,
+            sum(raw_count) AS total,
+            AVG(raw_count) AS mean_count,
+            MEDIAN(raw_count) AS median_count,
+            MAX(raw_count) AS max_count,
+            quantile_cont(raw_count, 0.25) AS first_quartile_count,
+            quantile_cont(raw_count, 0.75) AS third_quartile_count,
+            -- TODO: rolling ave max
+        FROM
+            raw
+        """
+    )
+    con.table("goal_prog").to_csv("data/processed/goal_progress.csv")
+
     con.sql("SELECT sum(raw_count) AS total FROM raw").show()
 
 
