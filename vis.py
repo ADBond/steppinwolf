@@ -34,3 +34,8 @@ monthly_line = alt.Chart(data).mark_line(color="blue").transform_window(
 
 
 (bar + weekly_line + monthly_line).properties(width=600).save("bar.html")
+
+hist = alt.Chart(data).mark_bar().encode(
+    alt.X("raw_count:Q").bin(step=1000),
+    y="count()",
+).save("hist.html")
