@@ -39,3 +39,21 @@ hist = alt.Chart(data).mark_bar().encode(
     alt.X("raw_count:Q").bin(step=1000),
     y="count()",
 ).save("hist.html")
+
+tab = con.read_csv("data/processed/excess.csv")
+raw_values = tab.select("units", "tens", "hundreds", "thousands").fetchall()
+
+data = alt.Data(
+    values=[
+        {"units": units, "tens": tens, "hundreds": hundreds, "thousands": thousands}
+        for units, tens, hundreds, thousands in raw_values
+    ]
+)
+
+stacked_hist = alt.VConcatChart(
+    vconcat=[
+        alt.Chart(data).mark_bar().encode(x="units:O", y="count()"),
+        alt.Chart(data).mark_bar().encode(x="tens:O", y="count()"),
+        alt.Chart(data).mark_bar().encode(x="hundreds:O", y="count()"),
+    ]
+).save("stacked_hist.html")
