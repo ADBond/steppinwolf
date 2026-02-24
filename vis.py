@@ -50,10 +50,15 @@ data = alt.Data(
     ]
 )
 
-stacked_hist = alt.VConcatChart(
-    vconcat=[
-        alt.Chart(data).mark_bar().encode(x="units:O", y="count()"),
-        alt.Chart(data).mark_bar().encode(x="tens:O", y="count()"),
-        alt.Chart(data).mark_bar().encode(x="hundreds:O", y="count()"),
+stacked_hist = alt.HConcatChart(
+    hconcat=[
+        alt.VConcatChart(
+            vconcat=[
+                alt.Chart(data).mark_bar().encode(x="units:O", y="count()"),
+                alt.Chart(data).mark_bar().encode(x="tens:O", y="count()"),
+                alt.Chart(data).mark_bar().encode(x="hundreds:O", y="count()"),
+            ]
+        ),
+        alt.Chart(data).mark_bar().encode(x="thousands:O", y="count()")
     ]
 ).save("stacked_hist.html")
