@@ -97,6 +97,7 @@ def main():
             day_of_week,
             round(AVG(raw_count), 2) AS avg_count,
             round(STDDEV_SAMP(raw_count), 2) AS std_count,
+            round(MEDIAN(raw_count)) AS med_count,
         FROM
             enhanced
         GROUP BY
