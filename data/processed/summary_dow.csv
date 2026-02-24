@@ -1,8 +1,8 @@
 occurences,day_index,day_of_week,avg_count,std_count
-7,1,Monday,8992.43,5932.52
+8,1,Monday,9267.63,5547.33
 7,2,Tuesday,4268.0,1192.6
 7,3,Wednesday,10625.86,3538.9
 8,4,Thursday,10786.5,2767.01
-7,5,Friday,8708.14,4106.5
-7,6,Saturday,9304.14,3951.02
-7,7,Sunday,8464.71,3682.13
+8,5,Friday,8927.75,3852.29
+8,6,Saturday,9849.75,3989.59
+8,7,Sunday,9018.5,3751.62

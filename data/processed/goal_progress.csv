@@ -1,10 +1,10 @@
 stat,value
-days_completed,50.0
-days_remaining,315.0
-total,438835.0
-mean_count,8776.7
-median_count,9688.0
+days_completed,54.0
+days_remaining,311.0
+total,487058.0
+mean_count,9019.592592592593
+median_count,10284.5
 max_count,15484.0
-first_quartile_count,5488.0
-third_quartile_count,12314.25
+first_quartile_count,5655.75
+third_quartile_count,12469.75
 highest_weekly_rolling_avg,10876.0
