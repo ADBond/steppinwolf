@@ -151,6 +151,20 @@ def main():
     )
     con.table("goal_prog_long").to_csv("data/processed/goal_progress.csv")
 
+    con.execute(
+        """
+        CREATE TABLE excess AS
+        SELECT
+            raw_count % 10 AS units,
+            (raw_count % 100 - units) // 10 AS tens,
+            (raw_count % 1000 - tens - units) // 100 AS hundreds,
+            (raw_count - hundreds - tens - units) // 1000 AS thousands,
+        FROM
+            enhanced
+        """
+    )
+    con.table("excess").to_csv("data/processed/excess.csv")
+
     con.sql("SELECT sum(raw_count) AS total FROM raw").show()
 
 
