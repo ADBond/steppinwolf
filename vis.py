@@ -12,7 +12,7 @@ data = alt.Data(
     ]
 )
 
-bar = alt.Chart(data).mark_bar(color="grey").encode(
+bar = alt.Chart(data).mark_bar(color="#dddddd").encode(
     x="day_index:O",
     y="raw_count:Q"
 )
@@ -31,9 +31,18 @@ monthly_line = alt.Chart(data).mark_line(color="blue").transform_window(
     x="day_index:O",
     y="monthly_rolling_avg:Q"
 )
+overall_line = alt.Chart(data).mark_line(color="black").transform_window(
+    to_date_avg="mean(raw_count)",
+    frame=[None, 0]
+).encode(
+    x="day_index:O",
+    y="to_date_avg:Q"
+)
+thresh_line = alt.Chart().mark_rule(color="#006600", strokeDash=(8, 8)).encode(
+    y=alt.datum(10_000),
+)
 
-
-(bar + weekly_line + monthly_line).properties(width=600).save("bar.html")
+(bar + overall_line + monthly_line + weekly_line + thresh_line).properties(width=600).save("bar.html")
 
 hist = alt.Chart(data).mark_bar().encode(
     alt.X("raw_count:Q").bin(step=1000),
