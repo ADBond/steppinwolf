@@ -165,6 +165,23 @@ def main():
     )
     con.table("excess").to_csv("data/processed/excess.csv")
 
+    con.sql(
+        """
+        SELECT
+            -- row_number() over () AS row_number,
+            raw_count,
+            date,
+            day_of_week,
+        FROM (
+            SELECT *
+            FROM
+                enhanced
+            ORDER BY
+                raw_count, date
+        )
+        """
+    ).to_csv("data/processed/just_counts.csv")
+
     con.sql("SELECT sum(raw_count) AS total FROM raw").show()
 
 
