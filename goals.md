@@ -7,8 +7,8 @@ In approximate priority order.
 * Mean >= 10000
 * Median >= 10000
 * Max >= 25000
-* Rolling average >= 12500
-    * ~~weekly~~
+* Hit a rolling average >= 12500
+    * ~~weekly~~ done - let's aim higher
         * weekly >= 15000
     * monthly
 * Lower quartile >= 5000
