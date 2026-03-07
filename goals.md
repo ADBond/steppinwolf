@@ -8,8 +8,11 @@ In approximate priority order.
 * Median >= 10000
 * Max >= 25000
 * Rolling average >= 12500
-    * weekly, stretch = monthly
+    * ~~weekly~~
+        * weekly >= 15000
+    * monthly
 * Lower quartile >= 5000
 * Upper quartile >= 12500
+* 10 days >= 20000
 * Mean >= 10000 for 4/7 days of week
 * Mean >= 10000 for _every_ DoW

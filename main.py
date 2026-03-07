@@ -136,6 +136,7 @@ def main():
             quantile_cont(raw_count, 0.75) AS third_quartile_count,
             MAX(weekly_rolling_avg) AS highest_weekly_rolling_avg,
             MAX(monthly_rolling_avg) AS highest_monthly_rolling_avg,
+            COUNT(*) FILTER (raw_count >= 20000) AS days_20k_plus,
         FROM
             enhanced
         """
@@ -143,11 +144,18 @@ def main():
     con.execute(
         """
         CREATE TABLE goal_prog_long AS
-        UNPIVOT goal_prog
-        ON *
-        INTO
-            NAME stat
-            VALUE value;
+        WITH pivoted AS (
+            UNPIVOT goal_prog
+            ON *
+            INTO
+                NAME stat
+                VALUE value
+        )
+        SELECT
+            stat,
+            value::INTEGER AS value
+        FROM
+            pivoted
         """
     )
     con.table("goal_prog_long").to_csv("data/processed/goal_progress.csv")
