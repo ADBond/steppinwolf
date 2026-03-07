@@ -135,6 +135,7 @@ def main():
             quantile_cont(raw_count, 0.25) AS first_quartile_count,
             quantile_cont(raw_count, 0.75) AS third_quartile_count,
             MAX(weekly_rolling_avg) AS highest_weekly_rolling_avg,
+            MAX(monthly_rolling_avg) AS highest_monthly_rolling_avg,
         FROM
             enhanced
         """
