@@ -132,6 +132,7 @@ def main():
             AVG(raw_count) AS mean_count,
             MEDIAN(raw_count) AS median_count,
             MAX(raw_count) AS max_count,
+            quantile_cont(raw_count, 0.1) AS first_decile_count,
             quantile_cont(raw_count, 0.25) AS first_quartile_count,
             quantile_cont(raw_count, 0.75) AS third_quartile_count,
             MAX(weekly_rolling_avg) AS highest_weekly_rolling_avg,

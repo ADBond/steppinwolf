@@ -11,7 +11,10 @@ In approximate priority order.
     * ~~weekly~~ done - let's aim higher
         * weekly >= 15000
     * monthly
-* Lower quartile >= 5000
+* ~~Lower quartile >= 5000~~
+    * Lower 10% >= 5000
+        * way behind on this, but let's give it a go!
+    * Lower quartile >= 7500
 * Upper quartile >= 12500
 * 10 days >= 20000
 * Mean >= 10000 for 4/7 days of week

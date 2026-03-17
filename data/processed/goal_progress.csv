@@ -5,6 +5,7 @@ total,753677
 mean_count,10049
 median_count,10903
 max_count,20261
+first_decile_count,3678
 first_quartile_count,6630
 third_quartile_count,12958
 highest_weekly_rolling_avg,14021
