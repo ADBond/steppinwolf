@@ -55,6 +55,13 @@ def main():
                 COUNTIF(raw_count <= 5000) OVER (
                     ORDER BY day_num
                     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                ) - day_num/10,
+                2
+            ) AS net_lower_10,
+            -ROUND(
+                COUNTIF(raw_count <= 7500 ) OVER (
+                    ORDER BY day_num
+                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
                 ) - day_num/4,
                 2
             ) AS net_lower,
