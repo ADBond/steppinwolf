@@ -49,6 +49,24 @@ hist = alt.Chart(data).mark_bar().encode(
     y="count()",
 ).save("hist.html")
 
+raw_values = tab.select("day_of_week", "raw_count").fetchall()
+data = alt.Data(
+    values=[
+        {"dow": day_of_week, "raw_count": raw_count}
+        for day_of_week, raw_count in raw_values
+    ]
+)
+scatter = alt.Chart(data).mark_circle(size=60).encode(
+    x="dow:N",
+    y="raw_count:Q",
+    xOffset="jitter:Q",
+    color="dow:N"
+).transform_calculate(
+    # Generate Gaussian jitter with a Box-Muller transform
+    jitter="sqrt(-2*log(random()))*cos(2*PI*random())"
+).properties(width=200).save("scatter.html")
+
+
 tab = con.read_csv("data/processed/excess.csv")
 raw_values = tab.select("units", "tens", "hundreds", "thousands").fetchall()
 
