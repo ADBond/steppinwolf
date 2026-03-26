@@ -75,19 +75,19 @@ def main():
             FLOOR(
                 AVG(raw_count) OVER (
                     ORDER BY day_num
-                    ROWS BETWEEN 7 PRECEDING AND CURRENT ROW
+                    ROWS BETWEEN 7-1 PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS weekly_rolling_avg,
             FLOOR(
                 AVG(raw_count) OVER (
                     ORDER BY day_num
-                    ROWS BETWEEN 28 PRECEDING AND CURRENT ROW
+                    ROWS BETWEEN 28-1 PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS monthly_rolling_avg,
             FLOOR(
                 AVG(raw_count) OVER (
                     ORDER BY day_num
-                    ROWS BETWEEN 84 PRECEDING AND CURRENT ROW
+                    ROWS BETWEEN 84-1 PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS quarterly_rolling_avg,
             notes,
