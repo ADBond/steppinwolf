@@ -33,7 +33,7 @@ monthly_line = alt.Chart(data).mark_line(color="blue").transform_window(
     y="monthly_rolling_avg:Q"
 )
 quarterly_line = alt.Chart(data).mark_line(color="#008800").transform_window(
-    monthly_rolling_avg="mean(raw_count)",
+    quarterly_rolling_avg="mean(raw_count)",
     frame=[-84, 0]
 ).encode(
     x="day_index:O",
