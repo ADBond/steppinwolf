@@ -17,6 +17,7 @@ bar = alt.Chart(data).mark_bar(color="#dddddd").encode(
     y="raw_count:Q"
 )
 
+# TODO: check frame bounds logic
 weekly_line = alt.Chart(data).mark_line(color="red").transform_window(
     weekly_rolling_avg="mean(raw_count)",
     frame=[-7, 0]
@@ -31,6 +32,13 @@ monthly_line = alt.Chart(data).mark_line(color="blue").transform_window(
     x="day_index:O",
     y="monthly_rolling_avg:Q"
 )
+quarterly_line = alt.Chart(data).mark_line(color="#008800").transform_window(
+    monthly_rolling_avg="mean(raw_count)",
+    frame=[-84, 0]
+).encode(
+    x="day_index:O",
+    y="quarterly_rolling_avg:Q"
+)
 overall_line = alt.Chart(data).mark_line(color="black").transform_window(
     to_date_avg="mean(raw_count)",
     frame=[None, 0]
@@ -42,7 +50,7 @@ thresh_line = alt.Chart().mark_rule(color="#006600", strokeDash=(8, 8)).encode(
     y=alt.datum(10_000),
 )
 
-(bar + overall_line + monthly_line + weekly_line + thresh_line).properties(width=600).save("bar.html")
+(bar + overall_line + monthly_line + weekly_line + quarterly_line + thresh_line).properties(width=600).save("bar.html")
 
 hist = alt.Chart(data).mark_bar().encode(
     alt.X("raw_count:Q").bin(step=1000),
