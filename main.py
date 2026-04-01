@@ -51,27 +51,18 @@ def main():
                 ORDER BY day_num
                 ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
             ) - day_num AS net_days_over_ten,
-            -ROUND(
-                COUNTIF(raw_count <= 5000) OVER (
-                    ORDER BY day_num
-                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-                ) - day_num/10,
-                2
-            ) AS net_lower_10,
-            -ROUND(
-                COUNTIF(raw_count <= 7500 ) OVER (
-                    ORDER BY day_num
-                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-                ) - day_num/4,
-                2
-            ) AS net_lower,
-            ROUND(
-                COUNTIF(raw_count >= 12500) OVER (
-                    ORDER BY day_num
-                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-                ) - day_num/4,
-                2
-            ) AS net_upper,
+            -10*COUNTIF(raw_count <= 5000) OVER (
+                ORDER BY day_num
+                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+            ) + day_num AS net_lower_10,
+            -4*COUNTIF(raw_count <= 7500 ) OVER (
+                ORDER BY day_num
+                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+            ) + day_num AS net_lower,
+            4 * COUNTIF(raw_count >= 12500) OVER (
+                ORDER BY day_num
+                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+            ) - day_num AS net_upper,
             FLOOR(
                 AVG(raw_count) OVER (
                     ORDER BY day_num
