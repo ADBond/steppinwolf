@@ -10,7 +10,8 @@ In approximate priority order.
 * Hit a rolling average >= 12500
     * ~~weekly~~ done - let's aim higher
         * weekly >= 15000
-    * monthly
+    * ~~monthly~~ done - higher monthly anaw
+        * monthly >= 13000
 * ~~Lower quartile >= 5000~~
     * Lower 10% >= 5000
         * way behind on this, but let's give it a go!
@@ -18,4 +19,5 @@ In approximate priority order.
 * Upper quartile >= 12500
 * 10 days >= 20000
 * Mean >= 10000 for 4/7 days of week
+* Mean >= 10000 for 6/7 days of week
 * Mean >= 10000 for _every_ DoW
