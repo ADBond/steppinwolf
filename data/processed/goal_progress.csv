@@ -8,6 +8,7 @@ max_count,20261
 first_decile_count,4687
 first_quartile_count,7564
 third_quartile_count,13106
+last_decile_count,14620
 highest_weekly_rolling_avg,14329
 highest_monthly_rolling_avg,12572
 highest_avg_ytd,10621

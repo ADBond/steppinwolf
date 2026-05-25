@@ -17,6 +17,7 @@ In approximate priority order.
         * way behind on this, but let's give it a go!
     * Lower quartile >= 7500
 * Upper quartile >= 12500
+    * Upper 10% >= 15000
 * 10 days >= 20000
 * Mean >= 10000 for 4/7 days of week
 * Mean >= 10000 for 6/7 days of week

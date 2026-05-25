@@ -55,6 +55,10 @@ def main():
                 ORDER BY day_num
                 ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
             ) + day_num AS net_lower_10,
+            10*COUNTIF(raw_count >= 15000) OVER (
+                ORDER BY day_num
+                ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+            ) - day_num AS net_upper_10,
             -4*COUNTIF(raw_count <= 7500 ) OVER (
                 ORDER BY day_num
                 ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
@@ -133,6 +137,7 @@ def main():
             quantile_cont(raw_count, 0.1) AS first_decile_count,
             quantile_cont(raw_count, 0.25) AS first_quartile_count,
             quantile_cont(raw_count, 0.75) AS third_quartile_count,
+            quantile_cont(raw_count, 0.9) AS last_decile_count,
             MAX(weekly_rolling_avg) AS highest_weekly_rolling_avg,
             MAX(monthly_rolling_avg) AS highest_monthly_rolling_avg,
             MAX(avg_to_date) AS highest_avg_ytd,
