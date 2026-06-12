@@ -114,6 +114,7 @@ def main():
             round(AVG(raw_count), 2) AS avg_count,
             round(STDDEV_SAMP(raw_count), 2) AS std_count,
             round(MEDIAN(raw_count)) AS med_count,
+            SUM(raw_count) - 10000*occurences AS net_count,
         FROM
             enhanced
         GROUP BY
