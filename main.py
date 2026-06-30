@@ -141,6 +141,8 @@ def main():
             quantile_cont(raw_count, 0.9) AS last_decile_count,
             MAX(weekly_rolling_avg) AS highest_weekly_rolling_avg,
             MAX(monthly_rolling_avg) AS highest_monthly_rolling_avg,
+            -- not a goal really, but nice to have
+            MAX(quarterly_rolling_avg) AS highest_quarterly_rolling_avg,
             MAX(avg_to_date) AS highest_avg_ytd,
             COUNT(*) FILTER (raw_count >= 20000) AS days_20k_plus,
         FROM
