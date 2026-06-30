@@ -21,6 +21,7 @@ raw_count,date,day_of_week
 5073,2026-04-18,Saturday
 5077,2026-05-12,Tuesday
 5128,2026-04-21,Tuesday
+5151,2026-06-23,Tuesday
 5443,2026-02-03,Tuesday
 5623,2026-01-23,Friday
 5754,2026-01-01,Thursday
@@ -67,6 +68,7 @@ raw_count,date,day_of_week
 10073,2026-05-07,Thursday
 10087,2026-06-03,Wednesday
 10112,2026-05-05,Tuesday
+10113,2026-06-25,Thursday
 10160,2026-05-16,Saturday
 10201,2026-01-11,Sunday
 10206,2026-05-29,Friday
@@ -81,6 +83,7 @@ raw_count,date,day_of_week
 10620,2026-04-04,Saturday
 10668,2026-01-21,Wednesday
 10709,2026-04-16,Thursday
+10779,2026-06-27,Saturday
 10813,2026-01-14,Wednesday
 10818,2026-03-24,Tuesday
 10903,2026-02-24,Tuesday
@@ -118,6 +121,7 @@ raw_count,date,day_of_week
 12579,2026-05-06,Wednesday
 12584,2026-04-17,Friday
 12587,2026-02-26,Thursday
+12644,2026-06-28,Sunday
 12648,2026-06-20,Saturday
 12713,2026-02-09,Monday
 12798,2026-06-10,Wednesday
@@ -144,9 +148,11 @@ raw_count,date,day_of_week
 13892,2026-03-20,Friday
 13897,2026-01-22,Thursday
 13907,2026-02-14,Saturday
+13947,2026-06-29,Monday
 13998,2026-01-16,Friday
 14023,2026-04-01,Wednesday
 14090,2026-05-17,Sunday
+14297,2026-06-26,Friday
 14349,2026-02-06,Friday
 14586,2026-01-07,Wednesday
 14634,2026-03-26,Thursday
@@ -159,6 +165,7 @@ raw_count,date,day_of_week
 15781,2026-03-09,Monday
 15843,2026-06-11,Thursday
 16017,2026-04-22,Wednesday
+16074,2026-06-24,Wednesday
 16238,2026-05-21,Thursday
 16967,2026-05-18,Monday
 17167,2026-06-18,Thursday
