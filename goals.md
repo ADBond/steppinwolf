@@ -9,9 +9,11 @@ In approximate priority order.
 * Max >= 25000
 * Hit a rolling average >= 12500
     * ~~weekly~~ done - let's aim higher
-        * weekly >= 15000
+        * ~~weekly >= 15000~~ done, let's shoot a bit higher
+        * weekly >= 16000
     * ~~monthly~~ done - higher monthly anaw
         * monthly >= 13000
+    * quarterly >= 12000 (stretch!)
 * ~~Lower quartile >= 5000~~
     * Lower 10% >= 5000
         * way behind on this, but let's give it a go!
