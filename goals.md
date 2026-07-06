@@ -6,13 +6,16 @@ In approximate priority order.
 
 * Mean >= 10000
 * Median >= 10000
-* Max >= 25000
+* ~~Max >= 25000~~ done
+    * Max >= 30000
 * Hit a rolling average >= 12500
     * ~~weekly~~ done - let's aim higher
         * ~~weekly >= 15000~~ done, let's shoot a bit higher
-        * weekly >= 16000
+        * ~~weekly >= 16000~~
+        * weekly >= 17000
     * ~~monthly~~ done - higher monthly anaw
-        * monthly >= 13000
+        * ~~monthly >= 13000~~
+        * monthly >= 15000
     * quarterly >= 12000 (stretch!)
 * ~~Lower quartile >= 5000~~
     * Lower 10% >= 5000
