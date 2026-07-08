@@ -151,6 +151,10 @@ def main():
             sum(raw_count) AS total,
             AVG(raw_count) AS mean_count,
             MEDIAN(raw_count) AS median_count,
+            AVG(raw_count) FILTER (
+                WHERE raw_count < (SELECT quantile_cont(raw_count, 0.75) FROM enhanced)
+                AND raw_count > (SELECT quantile_cont(raw_count, 0.1) FROM enhanced)
+            ) AS trimmed_mean,
             MAX(raw_count) AS max_count,
             quantile_cont(raw_count, 0.1) AS first_decile_count,
             quantile_cont(raw_count, 0.25) AS first_quartile_count,
