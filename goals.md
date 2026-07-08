@@ -5,6 +5,7 @@ In approximate priority order.
 ## 2026
 
 * Mean >= 10000
+    * Trimmed mean (No top 25% or lower 10%) >= 10000
 * Median >= 10000
 * ~~Max >= 25000~~ done
     * Max >= 30000

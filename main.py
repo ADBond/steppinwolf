@@ -25,6 +25,12 @@ def main():
     con.execute(
         """
         CREATE TABLE enhanced AS
+        WITH trim_bounds AS (
+            SELECT
+                quantile_cont(raw_count, 0.75) AS top_pc,
+                quantile_cont(raw_count, 0.1) AS low_pc
+            FROM raw
+        )
         SELECT
             day_num,
             DATE '2026-01-01' + day_num::INTEGER - 1 AS date,
@@ -85,9 +91,20 @@ def main():
                     ROWS BETWEEN 84-1 PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS quarterly_rolling_avg,
+            FLOOR(
+                AVG(raw_count) FILTER (
+                    WHERE raw_count < trim_bounds.top_pc
+                    AND raw_count > trim_bounds.low_pc
+                ) OVER (
+                    ORDER BY day_num
+                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                )
+            )::INT AS trimmed_mean,
             notes,
         FROM
             raw
+        CROSS JOIN
+            trim_bounds
         ORDER BY
             day_num
         """
