@@ -53,7 +53,7 @@ thresh_line = alt.Chart().mark_rule(color="#006600", strokeDash=(8, 8)).encode(
 (bar + overall_line + monthly_line + weekly_line + quarterly_line + thresh_line).properties(width=600).save("bar.html")
 
 hist = alt.Chart(data).mark_bar().encode(
-    alt.X("raw_count:Q").bin(step=1000),
+    alt.X("raw_count:Q").bin(step=500),
     y="count()",
 ).save("hist.html")
 
