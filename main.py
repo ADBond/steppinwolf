@@ -15,7 +15,7 @@ def main():
             header = true,
             columns = {
                 'day_num': 'INT8',
-                'raw_count': 'INT16',
+                'raw_count': 'INT32',
                 'notes': 'VARCHAR',
             }
         )
