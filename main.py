@@ -91,6 +91,7 @@ def main():
                     ROWS BETWEEN 84-1 PRECEDING AND CURRENT ROW
                 )
             )::INTEGER AS quarterly_rolling_avg,
+            -- TODO: trim bounds is global, not rolling, so inaccurate
             FLOOR(
                 AVG(raw_count) FILTER (
                     WHERE raw_count < trim_bounds.top_pc
