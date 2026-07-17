@@ -25,12 +25,6 @@ def main():
     con.execute(
         """
         CREATE TABLE enhanced AS
-        WITH trim_bounds AS (
-            SELECT
-                quantile_cont(raw_count, 0.75) AS top_pc,
-                quantile_cont(raw_count, 0.1) AS low_pc
-            FROM raw
-        )
         SELECT
             day_num,
             DATE '2026-01-01' + day_num::INTEGER - 1 AS date,
@@ -94,8 +88,8 @@ def main():
             -- TODO: trim bounds is global, not rolling, so inaccurate
             FLOOR(
                 AVG(raw_count) FILTER (
-                    WHERE raw_count < trim_bounds.top_pc
-                    AND raw_count > trim_bounds.low_pc
+                    WHERE raw_count < (SELECT quantile_cont(raw_count, 0.75) FROM raw)
+                    AND raw_count > (SELECT quantile_cont(raw_count, 0.1) FROM raw)
                 ) OVER (
                     ORDER BY day_num
                     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
@@ -104,8 +98,6 @@ def main():
             notes,
         FROM
             raw
-        CROSS JOIN
-            trim_bounds
         ORDER BY
             day_num
         """
