@@ -86,15 +86,15 @@ def main():
                 )
             )::INTEGER AS quarterly_rolling_avg,
             -- TODO: trim bounds is global, not rolling, so inaccurate
-            FLOOR(
-                AVG(raw_count) FILTER (
-                    WHERE raw_count < (SELECT quantile_cont(raw_count, 0.75) FROM raw)
-                    AND raw_count > (SELECT quantile_cont(raw_count, 0.1) FROM raw)
-                ) OVER (
-                    ORDER BY day_num
-                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-                )
-            )::INT AS trimmed_mean,
+            -- FLOOR(
+            --    AVG(raw_count) FILTER (
+            --        WHERE raw_count < (SELECT quantile_cont(raw_count, 0.75) FROM raw)
+            --        AND raw_count > (SELECT quantile_cont(raw_count, 0.1) FROM raw)
+            --    ) OVER (
+            --        ORDER BY day_num
+            --        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+            --    )
+            -- )::INT AS trimmed_mean,
             notes,
         FROM
             raw

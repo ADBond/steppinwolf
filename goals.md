@@ -8,7 +8,8 @@ In approximate priority order.
     * Trimmed mean (No top 25% or lower 10%) >= 10000
 * Median >= 10000
 * ~~Max >= 25000~~ done
-    * Max >= 30000
+    * ~~Max >= 30000~~ done
+    * Max >= 35000 ?? unlikely
 * Hit a rolling average >= 12500
     * ~~weekly~~ done - let's aim higher
         * ~~weekly >= 15000~~ done, let's shoot a bit higher
