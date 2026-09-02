@@ -9,7 +9,8 @@ In approximate priority order.
 * Median >= 10000
 * ~~Max >= 25000~~ done
     * ~~Max >= 30000~~ done
-    * Max >= 35000 ?? unlikely
+    * ~~Max >= 35000 ?? unlikely~~ done!
+    * Max >= 40000 ?? super unlikely
 * Hit a rolling average >= 12500
     * ~~weekly~~ done - let's aim higher
         * ~~weekly >= 15000~~ done, let's shoot a bit higher
@@ -25,7 +26,8 @@ In approximate priority order.
     * Lower quartile >= 7500
 * Upper quartile >= 12500
     * Upper 10% >= 15000
-* 10 days >= 20000
+* ~~10 days >= 20000~~
+    * 15 days >= 20000
 * Mean >= 10000 for 4/7 days of week
 * Mean >= 10000 for 6/7 days of week
 * Mean >= 10000 for _every_ DoW
