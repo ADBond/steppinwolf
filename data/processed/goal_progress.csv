@@ -1,10 +1,10 @@
 stat,value
 days_completed,303
 days_remaining,62
-total,3548771
-mean_count,11712
+total,3549521
+mean_count,11715
 median_count,11637
-trimmed_mean,10573
+trimmed_mean,10574
 max_count,37653
 first_decile_count,5368
 first_quartile_count,8185
@@ -12,6 +12,6 @@ third_quartile_count,14124
 last_decile_count,17396
 highest_weekly_rolling_avg,21668
 highest_monthly_rolling_avg,16857
-highest_quarterly_rolling_avg,14845
-highest_avg_ytd,11889
+highest_quarterly_rolling_avg,14854
+highest_avg_ytd,11892
 days_20k_plus,15
