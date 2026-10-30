@@ -215,6 +215,27 @@ def main():
 
     con.sql("SELECT sum(raw_count) AS total FROM raw").show()
 
+    con.sql(
+        """
+        WITH by_month AS (
+            SELECT
+                month(date) AS month,
+                raw_count,
+            FROM
+                enhanced
+        )
+        SELECT
+            month,
+            sum(raw_count) AS total_count,
+        FROM
+            by_month
+        GROUP BY
+            month
+        ORDER BY
+            month
+        """
+    ).show()
+
 
 if __name__ == "__main__":
     main()
