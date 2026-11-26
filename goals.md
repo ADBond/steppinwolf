@@ -11,6 +11,7 @@ In approximate priority order.
     * ~~Max >= 30000~~ done
     * ~~Max >= 35000 ?? unlikely~~ done!
     * Max >= 40000 ?? super unlikely
+* Total steps 4,000,000 (mean >= 10959)
 * Hit a rolling average >= 12500
     * ~~weekly~~ done - let's aim higher
         * ~~weekly >= 15000~~ done, let's shoot a bit higher
